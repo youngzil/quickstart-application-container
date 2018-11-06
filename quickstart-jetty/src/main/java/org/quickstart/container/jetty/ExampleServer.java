@@ -26,6 +26,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 public class ExampleServer {
 
     public static void main(String[] args) throws Exception {
+
         Server server = new Server();
         ServerConnector connector = new ServerConnector(server);
         connector.setPort(8090);

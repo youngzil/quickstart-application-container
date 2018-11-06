@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 2016-2017 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2015-2017 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -38,47 +38,50 @@
  * holder.
  */
 
-package org.quickstart.container.jersey.netty;
+package org.quickstart.container.jersey.java8;
 
-import java.net.URI;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Application;
 
-import io.netty.channel.Channel;
-import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
-import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.test.JerseyTest;
+
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
- * Hello world!
+ * Test usage of Java8's interface default methods as resource methods.
+ *
+ * @author Adam Lindenthal (adam.lindenthal at oracle.com)
  */
-public class App {
-    
-//    http://localhost:8080/helloworld
+public class DefaultMethodResourceTest extends JerseyTest {
 
-    static final String ROOT_PATH = "helloworld";
+    @Override
+    protected Application configure() {
+        return new Java8Application();
+    }
 
-    private static final URI BASE_URI = URI.create("http://localhost:8080/");
+    /**
+     * Test that JDK8 default methods do work as common JAX-RS resource methods.
+     */
+    @Test
+    public void testDefaultMethods() {
+        final WebTarget defaultMethodTarget = target("default-method");
 
-    public static void main(String[] args) {
-        try {
-            System.out.println("\"Hello World\" Jersey Example App on Netty container.");
+        // test default method with no @Path annotation
+        String response = defaultMethodTarget.request().get(String.class);
+        assertEquals("interface-root", response);
 
-            ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
-            final Channel server = NettyHttpContainerProvider.createHttp2Server(BASE_URI, resourceConfig, null);
+        // test default method with with @Path annotation
+        response = defaultMethodTarget.path("path").request().get(String.class);
+        assertEquals("interface-path", response);
+    }
 
-            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    server.close();
-                }
-            }));
-
-            System.out.println(String.format("Application started. (HTTP/2 enabled!)\nTry out %s%s\nStop the application using "
-                                                     + "CTRL+C.", BASE_URI, ROOT_PATH));
-            Thread.currentThread().join();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+    /**
+     * Test, that resource methods defined in the class implementing the interface with default method do work normally.
+     */
+    @Test
+    public void testImplementingClass() throws Exception {
+        final String response = target("default-method").path("class").request().get(String.class);
+        assertEquals("class", response);
     }
 }

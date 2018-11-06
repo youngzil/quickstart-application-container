@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 2016-2017 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2012-2017 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -38,47 +38,53 @@
  * holder.
  */
 
-package org.quickstart.container.jersey.netty;
+package org.quickstart.container.jersey.webapp;
 
+import java.io.IOException;
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import io.netty.channel.Channel;
-import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
-import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.grizzly2.servlet.GrizzlyWebContainerFactory;
+import org.glassfish.jersey.server.ServerProperties;
+import org.glassfish.jersey.servlet.ServletContainer;
+
+import org.glassfish.grizzly.http.server.HttpServer;
 
 /**
- * Hello world!
+ * @author Pavel Bucek (pavel.bucek at oracle.com)
  */
 public class App {
     
-//    http://localhost:8080/helloworld
+//    http://localhost:8080/helloworld-webapp/helloworld
 
-    static final String ROOT_PATH = "helloworld";
-
-    private static final URI BASE_URI = URI.create("http://localhost:8080/");
+    private static final URI BASE_URI = URI.create("http://localhost:8080/helloworld-webapp/");
+    public static final String ROOT_PATH = "helloworld";
 
     public static void main(String[] args) {
         try {
-            System.out.println("\"Hello World\" Jersey Example App on Netty container.");
+            System.out.println("\"Hello World\" Jersey Example App");
 
-            ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
-            final Channel server = NettyHttpContainerProvider.createHttp2Server(BASE_URI, resourceConfig, null);
-
+            Map<String, String> initParams = new HashMap<>();
+            initParams.put(
+                    ServerProperties.PROVIDER_PACKAGES,
+                    HelloWorldResource.class.getPackage().getName());
+            final HttpServer server = GrizzlyWebContainerFactory.create(BASE_URI, ServletContainer.class, initParams);
             Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    server.close();
+                    server.shutdownNow();
                 }
             }));
 
-            System.out.println(String.format("Application started. (HTTP/2 enabled!)\nTry out %s%s\nStop the application using "
-                                                     + "CTRL+C.", BASE_URI, ROOT_PATH));
+            System.out.println(String.format("Application started.%nTry out %s%s%nStop the application using CTRL+C",
+                    BASE_URI, ROOT_PATH));
+
             Thread.currentThread().join();
-        } catch (InterruptedException ex) {
+        } catch (IOException | InterruptedException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 }

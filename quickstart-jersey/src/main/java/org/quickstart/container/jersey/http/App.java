@@ -64,12 +64,16 @@ public class App {
 
             final ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
             final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig, false);
-            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    server.shutdownNow();
-                }
-            }));
+            // Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            // @Override
+            // public void run() {
+            // server.shutdownNow();
+            // }
+            // }));
+
+            // final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, new MyApplication(), false);
+            Runtime.getRuntime().addShutdownHook(new Thread(server::shutdownNow));
+
             server.start();
 
             System.out.println(String.format("Application started.\nTry out %s%s\nStop the application using CTRL+C", BASE_URI, ROOT_PATH));

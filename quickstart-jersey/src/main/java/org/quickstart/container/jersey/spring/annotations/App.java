@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 2016-2017 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2015-2017 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -38,45 +38,52 @@
  * holder.
  */
 
-package org.quickstart.container.jersey.netty;
+package org.quickstart.container.jersey.spring.annotations;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import io.netty.channel.Channel;
-import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
-import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
+
+import org.glassfish.grizzly.http.server.HttpServer;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * Hello world!
+ * @author Petr Bouda
  */
 public class App {
-    
-//    http://localhost:8080/helloworld
 
-    static final String ROOT_PATH = "helloworld";
+    // http://localhost:8080/base/spring-resource>
+    // http://localhost:8080/base/spring-resource/goodbye
+    // http://localhost:8080/base/spring-resource/norwegian-goodbye
 
-    private static final URI BASE_URI = URI.create("http://localhost:8080/");
+    private static final URI BASE_URI = URI.create("http://localhost:8080/base/");
+
+    public static final String ROOT_PATH = "base";
 
     public static void main(String[] args) {
         try {
-            System.out.println("\"Hello World\" Jersey Example App on Netty container.");
+            System.out.println("\"Hello World\" Jersey-Spring Example App");
 
-            ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
-            final Channel server = NettyHttpContainerProvider.createHttp2Server(BASE_URI, resourceConfig, null);
+            final JerseyConfig resourceConfig = new JerseyConfig();
+            resourceConfig.property("contextConfig", new AnnotationConfigApplicationContext(SpringAnnotationConfig.class));
 
+            final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig, false);
             Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    server.close();
+                    server.shutdownNow();
                 }
             }));
+            server.start();
 
-            System.out.println(String.format("Application started. (HTTP/2 enabled!)\nTry out %s%s\nStop the application using "
-                                                     + "CTRL+C.", BASE_URI, ROOT_PATH));
+            System.out.println(String.format("Application started.\nTry out %s%s\nStop the application using CTRL+C", BASE_URI, ROOT_PATH));
+
             Thread.currentThread().join();
-        } catch (InterruptedException ex) {
+        } catch (IOException | InterruptedException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
 

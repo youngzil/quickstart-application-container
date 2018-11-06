@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 2016-2017 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013-2017 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -38,47 +38,45 @@
  * holder.
  */
 
-package org.quickstart.container.jersey.netty;
+package org.quickstart.container.jersey.spring.webapp;
 
-import java.net.URI;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import io.netty.channel.Channel;
-import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
-import org.glassfish.jersey.server.ResourceConfig;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
+
+import javax.inject.Singleton;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
- * Hello world!
+ * Jersey Spring integration example.
+ * Demonstrate how to use Spring managed JAX-RS resource class with singleton scope (+ Spring bean DI).
+ *
+ * @author Marko Asplund (marko.asplund at gmail.com)
  */
-public class App {
-    
-//    http://localhost:8080/helloworld
+@Path("spring-singleton-hello")
+@Component
+@Singleton
+public class SpringSingletonResource {
 
-    static final String ROOT_PATH = "helloworld";
+    private final AtomicInteger counter = new AtomicInteger();
 
-    private static final URI BASE_URI = URI.create("http://localhost:8080/");
+    @Autowired
+    private GreetingService greetingService;
 
-    public static void main(String[] args) {
-        try {
-            System.out.println("\"Hello World\" Jersey Example App on Netty container.");
-
-            ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
-            final Channel server = NettyHttpContainerProvider.createHttp2Server(BASE_URI, resourceConfig, null);
-
-            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    server.close();
-                }
-            }));
-
-            System.out.println(String.format("Application started. (HTTP/2 enabled!)\nTry out %s%s\nStop the application using "
-                                                     + "CTRL+C.", BASE_URI, ROOT_PATH));
-            Thread.currentThread().join();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getHello(@Context HttpHeaders headers, @QueryParam("p1") String p1) {
+        if ("foobar".equals(p1)) {
+            throw new IllegalArgumentException("foobar is illegal");
         }
-
+        return String.format("%d: %s", counter.incrementAndGet(), greetingService.greet("world"));
     }
 }

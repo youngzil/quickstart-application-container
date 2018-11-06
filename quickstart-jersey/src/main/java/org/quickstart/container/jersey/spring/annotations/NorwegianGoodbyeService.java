@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 2016-2017 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2014-2017 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -38,47 +38,15 @@
  * holder.
  */
 
-package org.quickstart.container.jersey.netty;
+package org.quickstart.container.jersey.spring.annotations;
 
-import java.net.URI;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.springframework.stereotype.Component;
 
-import io.netty.channel.Channel;
-import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
-import org.glassfish.jersey.server.ResourceConfig;
+@Component
+public class NorwegianGoodbyeService implements GoodbyeService {
 
-/**
- * Hello world!
- */
-public class App {
-    
-//    http://localhost:8080/helloworld
-
-    static final String ROOT_PATH = "helloworld";
-
-    private static final URI BASE_URI = URI.create("http://localhost:8080/");
-
-    public static void main(String[] args) {
-        try {
-            System.out.println("\"Hello World\" Jersey Example App on Netty container.");
-
-            ResourceConfig resourceConfig = new ResourceConfig(HelloWorldResource.class);
-            final Channel server = NettyHttpContainerProvider.createHttp2Server(BASE_URI, resourceConfig, null);
-
-            Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    server.close();
-                }
-            }));
-
-            System.out.println(String.format("Application started. (HTTP/2 enabled!)\nTry out %s%s\nStop the application using "
-                                                     + "CTRL+C.", BASE_URI, ROOT_PATH));
-            Thread.currentThread().join();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+    @Override
+    public String goodbye(final String who) {
+        return String.format("hadet, %s!", who);
     }
 }
