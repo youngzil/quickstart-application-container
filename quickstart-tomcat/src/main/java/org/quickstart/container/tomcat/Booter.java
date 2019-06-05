@@ -3,7 +3,7 @@
  * 文件名：Booter.java
  * 版本信息：
  * 日期：2018年4月25日
- * Copyright asiainfo Corporation 2018
+ * Copyright yangzl Corporation 2018
  * 版权所有 *
  */
 package org.quickstart.container.tomcat;
@@ -23,7 +23,7 @@ import org.apache.catalina.startup.Tomcat;
  * 
  * https://blog.csdn.net/u012550460/article/details/49864931
  * 
- * @author：yangzl@asiainfo.com
+ * @author：youngzil@163.com
  * @2018年4月25日 下午12:17:43
  * @since 1.0
  */

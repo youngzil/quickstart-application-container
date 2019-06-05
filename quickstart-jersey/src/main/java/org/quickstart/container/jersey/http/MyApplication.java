@@ -3,7 +3,7 @@
  * 文件名：MyApplication.java
  * 版本信息：
  * 日期：2018年11月5日
- * Copyright asiainfo Corporation 2018
+ * Copyright yangzl Corporation 2018
  * 版权所有 *
  */
 package org.quickstart.container.jersey.http;
@@ -15,7 +15,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 /**
  * MyApplication
  * 
- * @author：yangzl@asiainfo.com
+ * @author：youngzil@163.com
  * @2018年11月5日 下午9:56:37
  * @since 1.0
  */

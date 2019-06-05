@@ -3,7 +3,7 @@
  * 文件名：HelloServlet.java
  * 版本信息：
  * 日期：2018年4月25日
- * Copyright asiainfo Corporation 2018
+ * Copyright yangzl Corporation 2018
  * 版权所有 *
  */
 package org.quickstart.container.jetty;
@@ -19,7 +19,7 @@ import javax.servlet.ServletResponse;
 /**
  * HelloServlet 
  *  
- * @author：yangzl@asiainfo.com
+ * @author：youngzil@163.com
  * @2018年4月25日 上午11:00:57 
  * @since 1.0
  */

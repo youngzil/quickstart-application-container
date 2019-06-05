@@ -102,7 +102,7 @@ public class JettyServer {
       ServletHolder helloServlet = context.addServlet(HelloServlet.class, "/hello");
       Map paramMap = new HashMap();
       paramMap.put("javax.ws.rs.Application",
-          "com.asiainfo.openplatform.isb.restful.server.servlet.AopResourceConfig");
+          "com.yangzl.openplatform.isb.restful.server.servlet.AopResourceConfig");
       helloServlet.setInitParameters(paramMap);
       helloServlet.setInitOrder(1);
 
