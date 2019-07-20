@@ -1,0 +1,42 @@
+<quickserver>
+  <name>EchoServer v 1.0</name>
+  <port>4123</port>
+  <bind-address>127.0.0.1</bind-address>
+
+  <client-command-handler>
+    echoserver.EchoCommandHandler
+  </client-command-handler>
+  <authenticator>
+    echoserver.EchoServerQuickAuthenticator
+  </authenticator>
+  <client-data>
+    echoserver.EchoServerPoolableData
+  </client-data>
+
+  <console-logging-level>INFO</console-logging-level>
+
+  <!-- some extra config. added just to show -->
+  <timeout>4</timeout>
+  <timeout-msg>-ERR Timeout</timeout-msg>
+  <max-auth-try>5</max-auth-try>
+  <max-auth-try-msg>-ERR Max Auth Try Reached</max-auth-try-msg>
+  <max-connection>-1</max-connection>
+  <max-connection-msg>
+    Server Busy/nMax Connection Reached
+  </max-connection-msg>
+  <object-pool>
+    <max-active>-1</max-active>
+    <max-idle>15</max-idle>
+  </object-pool>
+  <!-- some extra config. added just to show -->
+
+  <qsadmin-server>
+    <name>EchoAdmin v 1.0</name>
+    <port>4124</port>
+    <bind-address>127.0.0.1</bind-address>
+    <command-plugin>
+      echoserver.QSAdminCommandPlugin
+    </command-plugin>
+  </qsadmin-server>
+
+</quickserver>
