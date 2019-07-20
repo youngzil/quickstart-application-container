@@ -46,16 +46,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="greetingService" class="org.quickstart.container.jersey.spring.webapp.GreetingServiceImpl"/>
+    <bean id="greetingService" class="org.quickstart.jersey.spring.webapp.GreetingServiceImpl"/>
 
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 
-    <bean class="org.quickstart.container.jersey.spring.webapp.DateTimeService" scope="request"/>
+    <bean class="org.quickstart.jersey.spring.webapp.DateTimeService" scope="request"/>
 
-    <bean class="org.quickstart.container.jersey.spring.webapp.SpringSingletonResource"/>
+    <bean class="org.quickstart.jersey.spring.webapp.SpringSingletonResource"/>
 
-    <bean class="org.quickstart.container.jersey.spring.webapp.SpringRequestResource" scope="request"/>
+    <bean class="org.quickstart.jersey.spring.webapp.SpringRequestResource" scope="request"/>
 
-    <bean class="org.quickstart.container.jersey.spring.webapp.CustomExceptionMapper"/>
+    <bean class="org.quickstart.jersey.spring.webapp.CustomExceptionMapper"/>
 
 </beans>
