@@ -30,6 +30,7 @@
 		<module>quickstart-weblogic</module>
 		<module>quickstart-websphere</module>
 		<module>quickstart-jersey</module>
-	</modules>
+    <module>quickstart-quickserver</module>
+  </modules>
 
 </project>
