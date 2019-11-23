@@ -31,6 +31,7 @@
 		<module>quickstart-websphere</module>
 		<module>quickstart-jersey</module>
     <module>quickstart-quickserver</module>
+    <module>quickstart-undertow</module>
   </modules>
 
 </project>

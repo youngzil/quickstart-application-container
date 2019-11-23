@@ -116,7 +116,7 @@ public class Data implements ClientData, PoolableObject {
 		}
 	}
 
-	public void startDataServer(ServerSocket acceptSocket, ftpserver.Data data) {
+	public void startDataServer(ServerSocket acceptSocket, Data data) {
 		new DataServer(acceptSocket, data);
 	}
 
@@ -180,8 +180,8 @@ class DataServer extends Thread {
 		Logger.getLogger(DataServer.class.getName());
 	
 	ServerSocket acceptSocket=null;
-	ftpserver.Data data = null;
-	public DataServer(ServerSocket acceptSocket, ftpserver.Data data) {
+	Data data = null;
+	public DataServer(ServerSocket acceptSocket, Data data) {
 		super("DataServer");
 		this.acceptSocket = acceptSocket;
 		this.data = data;
