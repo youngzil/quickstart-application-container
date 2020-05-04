@@ -8,6 +8,7 @@
  */
 package org.quickstart.jetty;
 
+import cn.hangzhou.demo.servlet.LegalServlet;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
@@ -29,11 +30,12 @@ public class ExampleServer {
 
         Server server = new Server();
         ServerConnector connector = new ServerConnector(server);
-        connector.setPort(8090);
+        connector.setPort(9001);
         server.setConnectors(new Connector[] {connector});
         ServletContextHandler context = new ServletContextHandler();
         context.setContextPath("/");
         context.addServlet(HelloServlet.class, "/hello");
+        context.addServlet(LegalServlet.class, "/oauth2/authorization/checkForZjService");
         context.addServlet(AsyncEchoServlet.class, "/echo/*");
         HandlerCollection handlers = new HandlerCollection();
         handlers.setHandlers(new Handler[] {context, new DefaultHandler()});
