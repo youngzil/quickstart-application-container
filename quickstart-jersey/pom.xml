@@ -16,7 +16,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jersey.version>2.27</jersey.version>
+
+		<jersey.version>2.31</jersey.version>
 		<spring.version>4.3.20.RELEASE</spring.version>
 		<servlet-api.version>4.0.1</servlet-api.version>
 		<jetty.servlet.api.25.version>6.1.14</jetty.servlet.api.25.version>

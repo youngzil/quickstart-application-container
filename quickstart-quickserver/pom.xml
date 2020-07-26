@@ -18,7 +18,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+    <quickserver.version>2.1.0</quickserver.version>
   </properties>
 
   <dependencies>
@@ -26,7 +26,7 @@
     <dependency>
       <groupId>org.quickserver</groupId>
       <artifactId>quickserver</artifactId>
-      <version>2.1.0</version>
+      <version>${quickserver.version}</version>
       <!-- 设置scope和systemPath，systemPath可以是相对或者绝对路径 -->
       <scope>system</scope>
       <systemPath>${project.basedir}/src/main/lib/QuickServer.jar</systemPath>
@@ -35,7 +35,7 @@
     <dependency>
       <groupId>org.quickserver</groupId>
       <artifactId>quickserverclient</artifactId>
-      <version>2.1.0</version>
+      <version>${quickserver.version}</version>
       <!-- 设置scope和systemPath，systemPath可以是相对或者绝对路径 -->
       <scope>system</scope>
       <systemPath>${project.basedir}/src/main/lib/QuickServerClient.jar</systemPath>
@@ -44,7 +44,7 @@
     <dependency>
       <groupId>org.quickserver</groupId>
       <artifactId>qsadmingui</artifactId>
-      <version>2.1.0</version>
+      <version>${quickserver.version}</version>
       <!-- 设置scope和systemPath，systemPath可以是相对或者绝对路径 -->
       <scope>system</scope>
       <systemPath>${project.basedir}/src/main/lib/QSAdminGUI.jar</systemPath>
@@ -52,7 +52,6 @@
 
 
     <!--    依赖-->
-    <!-- https://mvnrepository.com/artifact/net.sf.squirrel-sql.thirdparty-non-maven/metouia -->
     <dependency>
       <groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
       <artifactId>metouia</artifactId>
