@@ -48,7 +48,8 @@ public class HelloServlet implements Servlet{
      */
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        System.out.println("HelloServlet service");
+
+        System.out.println("HelloServlet service,Thread=" + Thread.currentThread().getName());
         
     }
 
