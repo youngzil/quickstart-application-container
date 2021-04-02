@@ -1,93 +1,92 @@
 <?xml version="1.0"?>
 <project
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <parent>
-    <groupId>org.quickstart</groupId>
-    <artifactId>quickstart-application-container</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>..</relativePath> <!-- lookup parent from repository -->
-  </parent>
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <parent>
+        <groupId>org.quickstart</groupId>
+        <artifactId>quickstart-application-container</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>quickstart-quickserver</artifactId>
-  <packaging>jar</packaging>
-  <name>${project.artifactId}-${project.version}</name>
-  <url>http://maven.apache.org</url>
-  <description>Demo project for XXX</description>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>quickstart-quickserver</artifactId>
+    <packaging>jar</packaging>
+    <name>${project.artifactId}-${project.version}</name>
+    <url>http://maven.apache.org</url>
+    <description>Demo project for XXX</description>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <quickserver.version>2.1.0</quickserver.version>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <quickserver.version>2.1.0</quickserver.version>
+    </properties>
 
-  <dependencies>
+    <dependencies>
 
-    <dependency>
-      <groupId>org.quickserver</groupId>
-      <artifactId>quickserver</artifactId>
-      <version>${quickserver.version}</version>
-      <!-- 设置scope和systemPath，systemPath可以是相对或者绝对路径 -->
-      <scope>system</scope>
-      <systemPath>${project.basedir}/src/main/lib/QuickServer.jar</systemPath>
-    </dependency>
+        <dependency>
+            <groupId>org.quickserver</groupId>
+            <artifactId>quickserver</artifactId>
+            <version>${quickserver.version}</version>
+            <!-- 设置scope和systemPath，systemPath可以是相对或者绝对路径 -->
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/lib/QuickServer.jar</systemPath>
+        </dependency>
 
-    <dependency>
-      <groupId>org.quickserver</groupId>
-      <artifactId>quickserverclient</artifactId>
-      <version>${quickserver.version}</version>
-      <!-- 设置scope和systemPath，systemPath可以是相对或者绝对路径 -->
-      <scope>system</scope>
-      <systemPath>${project.basedir}/src/main/lib/QuickServerClient.jar</systemPath>
-    </dependency>
+        <dependency>
+            <groupId>org.quickserver</groupId>
+            <artifactId>quickserverclient</artifactId>
+            <version>${quickserver.version}</version>
+            <!-- 设置scope和systemPath，systemPath可以是相对或者绝对路径 -->
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/lib/QuickServerClient.jar</systemPath>
+        </dependency>
 
-    <dependency>
-      <groupId>org.quickserver</groupId>
-      <artifactId>qsadmingui</artifactId>
-      <version>${quickserver.version}</version>
-      <!-- 设置scope和systemPath，systemPath可以是相对或者绝对路径 -->
-      <scope>system</scope>
-      <systemPath>${project.basedir}/src/main/lib/QSAdminGUI.jar</systemPath>
-    </dependency>
+        <dependency>
+            <groupId>org.quickserver</groupId>
+            <artifactId>qsadmingui</artifactId>
+            <version>${quickserver.version}</version>
+            <!-- 设置scope和systemPath，systemPath可以是相对或者绝对路径 -->
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/lib/QSAdminGUI.jar</systemPath>
+        </dependency>
 
 
-    <!--    依赖-->
-    <dependency>
-      <groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
-      <artifactId>metouia</artifactId>
-      <version>1.0.0-beta</version>
-    </dependency>
+        <!--    依赖-->
+        <dependency>
+            <groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
+            <artifactId>metouia</artifactId>
+            <version>1.0.0-beta</version>
+        </dependency>
 
-    <dependency>
-      <groupId>commons-beanutils</groupId>
-      <artifactId>commons-beanutils</artifactId>
-      <version>1.9.4</version>
-    </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
+        </dependency>
 
-    <dependency>
-      <groupId>commons-collections</groupId>
-      <artifactId>commons-collections</artifactId>
-      <version>3.2.2</version>
-    </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
 
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-digester3</artifactId>
-      <version>3.2</version>
-    </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-digester3</artifactId>
+            <version>3.2</version>
+        </dependency>
 
-    <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-      <version>1.2</version>
-    </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
 
-    <dependency>
-      <groupId>commons-pool</groupId>
-      <artifactId>commons-pool</artifactId>
-      <version>1.6</version>
-    </dependency>
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>1.6</version>
+        </dependency>
 
-  </dependencies>
+    </dependencies>
 
 </project>

@@ -1,195 +1,195 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<parent>
-		<groupId>org.quickstart</groupId>
-		<artifactId>quickstart-application-container</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>..</relativePath> <!-- lookup parent from repository -->
-	</parent>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <parent>
+        <groupId>org.quickstart</groupId>
+        <artifactId>quickstart-application-container</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>quickstart-jersey</artifactId>
-	<packaging>war</packaging>
-	<name>${project.artifactId}-${project.version}</name>
-	<url>http://maven.apache.org</url>
-	<description>Demo project for XXX</description>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>quickstart-jersey</artifactId>
+    <packaging>war</packaging>
+    <name>${project.artifactId}-${project.version}</name>
+    <url>http://maven.apache.org</url>
+    <description>Demo project for XXX</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jersey.version>2.31</jersey.version>
-		<spring.version>4.3.20.RELEASE</spring.version>
-		<servlet-api.version>4.0.1</servlet-api.version>
-		<jetty.servlet.api.25.version>6.1.14</jetty.servlet.api.25.version>
+        <jersey.version>2.31</jersey.version>
+        <spring.version>4.3.20.RELEASE</spring.version>
+        <servlet-api.version>4.0.1</servlet-api.version>
+        <jetty.servlet.api.25.version>6.1.14</jetty.servlet.api.25.version>
 
-		<jersey.config.test.container.port>8080</jersey.config.test.container.port>
-		<java.version>1.8</java.version>
-	</properties>
+        <jersey.config.test.container.port>8080</jersey.config.test.container.port>
+        <java.version>1.8</java.version>
+    </properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.glassfish.jersey</groupId>
-				<artifactId>jersey-bom</artifactId>
-				<version>${jersey.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>${jersey.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<dependencies>
+    <dependencies>
 
-		<!-- 2.X：package：org.glassfish.jersey -->
+        <!-- 2.X：package：org.glassfish.jersey -->
 
-		<!-- http -->
-		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-grizzly2-http</artifactId>
-		</dependency>
+        <!-- http -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-grizzly2-http</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-grizzly2-servlet</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-grizzly2-servlet</artifactId>
+        </dependency>
 
-		<!-- netty -->
-		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-netty-http</artifactId>
-		</dependency>
+        <!-- netty -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-netty-http</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.glassfish.jersey.inject</groupId>
-			<artifactId>jersey-hk2</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+        </dependency>
 
-		<!-- spring依赖 -->
-		<dependency>
-			<groupId>org.glassfish.jersey.ext</groupId>
-			<artifactId>jersey-spring4</artifactId>
-		</dependency>
+        <!-- spring依赖 -->
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-spring4</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-      <version>5.2.6.RELEASE</version>
-			<scope>compile</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.2.6.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-servlet</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>servlet-api-2.5</artifactId>
-			<version>${jetty.servlet.api.25.version}</version>
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>servlet-api-2.5</artifactId>
+            <version>${jetty.servlet.api.25.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version>
-      <scope>provided</scope>
-    </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
-		</dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.glassfish.jersey.test-framework</groupId>
-			<artifactId>jersey-test-framework-util</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.test-framework</groupId>
+            <artifactId>jersey-test-framework-util</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
-			<artifactId>jersey-test-framework-provider-bundle</artifactId>
-			<type>pom</type>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+            <artifactId>jersey-test-framework-provider-bundle</artifactId>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
-			<artifactId>jersey-test-framework-provider-inmemory</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+            <artifactId>jersey-test-framework-provider-inmemory</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<!-- 1.X：package：com.sun.jersey -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.sun.jersey</groupId> -->
-		<!-- <artifactId>jersey-server</artifactId> -->
-		<!-- <version>1.19.4</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.sun.jersey</groupId> -->
-		<!-- <artifactId>jersey-server</artifactId> -->
-		<!-- <version>1.19.4</version> -->
-		<!-- </dependency> -->
+        <!-- 1.X：package：com.sun.jersey -->
+        <!-- <dependency> -->
+        <!-- <groupId>com.sun.jersey</groupId> -->
+        <!-- <artifactId>jersey-server</artifactId> -->
+        <!-- <version>1.19.4</version> -->
+        <!-- </dependency> -->
+        <!-- <dependency> -->
+        <!-- <groupId>com.sun.jersey</groupId> -->
+        <!-- <artifactId>jersey-server</artifactId> -->
+        <!-- <version>1.19.4</version> -->
+        <!-- </dependency> -->
 
-	</dependencies>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<inherited>true</inherited>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<showWarnings>false</showWarnings>
-					<fork>false</fork>
-				</configuration>
-			</plugin>
-			<!-- Run the application using "mvn jetty:run" -->
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<!-- TODO: Remove the version when JERSEY-2743 is resolved. -->
-				<version>9.4.12.v20180830</version>
-				<configuration>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
-					<stopPort>9999</stopPort>
-					<stopKey>STOP</stopKey>
-					<webApp>
-						<contextPath>/</contextPath>
-						<webInfIncludeJarPattern>.*/.*jersey-[^/]\.jar$</webInfIncludeJarPattern>
-					</webApp>
-					<systemProperties>
-						<systemProperty>
-							<name>jetty.port</name>
-							<value>${jersey.config.test.container.port}</value>
-						</systemProperty>
-					</systemProperties>
-					<war>${project.build.directory}/${project.build.finalName}.war</war>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <inherited>true</inherited>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <showWarnings>false</showWarnings>
+                    <fork>false</fork>
+                </configuration>
+            </plugin>
+            <!-- Run the application using "mvn jetty:run" -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <!-- TODO: Remove the version when JERSEY-2743 is resolved. -->
+                <version>9.4.12.v20180830</version>
+                <configuration>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <stopPort>9999</stopPort>
+                    <stopKey>STOP</stopKey>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                        <webInfIncludeJarPattern>.*/.*jersey-[^/]\.jar$</webInfIncludeJarPattern>
+                    </webApp>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>jetty.port</name>
+                            <value>${jersey.config.test.container.port}</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <war>${project.build.directory}/${project.build.finalName}.war</war>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>xml-maven-plugin</artifactId>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-assembly-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>xml-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
