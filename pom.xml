@@ -22,6 +22,8 @@
     </properties>
 
     <modules>
+        <module>quickstart-simple</module>
+        <module>quickstart-smart-http</module>
         <module>quickstart-jetty</module>
         <module>quickstart-tomcat</module>
         <module>quickstart-weblogic</module>

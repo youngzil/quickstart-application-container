@@ -1,4 +1,4 @@
-package org.quickstart.quickserver.example;
+package org.quickstart.simple.server;
 
 import java.io.File;
 import org.quickserver.net.AppException;
