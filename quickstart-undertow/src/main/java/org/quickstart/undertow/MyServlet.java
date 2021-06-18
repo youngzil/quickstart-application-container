@@ -18,10 +18,12 @@ public class MyServlet extends HttpServlet {
 
   private static final String message = "This is MyServlet";
 
+  @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     doPost(req, resp);
   }
 
+  @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     PrintWriter writer = resp.getWriter();
     writer.write(message);

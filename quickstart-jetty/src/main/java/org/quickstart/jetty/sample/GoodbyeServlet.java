@@ -18,6 +18,7 @@ public class GoodbyeServlet extends HttpServlet {
     this.msg = msg;
   }
 
+  @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     response.setContentType("text/html");
